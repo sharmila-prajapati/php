@@ -4,16 +4,32 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\BookStorageRepository")
+ */
 class BookStorage
 {
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
     private $id;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
     private $isbn;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
     private $title;
 
-    private $addedOn;
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $addedon;
 
     public function getId()
     {
@@ -44,12 +60,12 @@ class BookStorage
         return $this;
     }
 
-    public function getAddedOn(): ?\DateTimeInterface
+    public function getAddedon(): ?\DateTimeInterface
     {
         return $this->addedon;
     }
 
-    public function setAddedOn(?\DateTimeInterface $addedon): self
+    public function setAddedon(?\DateTimeInterface $addedon): self
     {
         $this->addedon = $addedon;
 
